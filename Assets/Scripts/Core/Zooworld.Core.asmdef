@@ -1,0 +1,17 @@
+{
+    "name": "Zooworld.Core",
+    "rootNamespace": "Zooworld.Core",
+    "references": [
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:d6d3a97500ffb4b529a1327f7d7cf0a4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
