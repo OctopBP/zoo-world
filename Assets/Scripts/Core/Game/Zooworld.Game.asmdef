@@ -1,7 +1,10 @@
 {
     "name": "Zooworld.Game",
     "rootNamespace": "Zooworld.Game",
-    "references": [],
+    "references": [
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:53d6a65190ac546cc9ce43fa19358b36"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

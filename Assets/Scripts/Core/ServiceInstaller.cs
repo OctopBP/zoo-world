@@ -7,10 +7,16 @@ namespace Zooworld.Core
 	{
 		public override void InstallBindings()
 		{
-			InstallEcs();
+			BindLogService();
+			BindEcs();
 		}
 
-		private void InstallEcs()
+		private void BindLogService()
+		{
+			Container.Bind<ILogService>().To<LogService>().AsSingle();
+		}
+
+		private void BindEcs()
 		{
 			Container.Bind<IEcsStartup>().To<LeoEcsStartup>().AsSingle();
 		}
