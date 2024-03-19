@@ -1,18 +1,22 @@
-using UnityEngine;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using UnityEngine.SceneManagement;
 using VContainer;
+using VContainer.Unity;
 using ZooWorld.Core;
 
 namespace ZooWorld.Game
 {
-    public class Bootstrap : MonoBehaviour
+    public class Bootstrap : IAsyncStartable
     {
-        [Inject] private ISceneLoader _sceneLoader;
-        [Inject] private ILog _log;
+        [Inject] private readonly ISceneLoader _sceneLoader;
+        [Inject] private readonly ILog _log;
+        [Inject] private readonly LifetimeScope _parent;
         
-        private void Start()
+        public async UniTask StartAsync(CancellationToken cancellation)
         {
             _log.Log("Bootstrap start");
-            _sceneLoader.LoadScene("Game");
+            await _sceneLoader.LoadSceneAsync("Game", LoadSceneMode.Additive);
         }
     }
 }
