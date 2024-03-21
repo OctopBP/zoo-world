@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using ZooWorld.Game.Units.Types;
 
 namespace ZooWorld.Game.Units
 {

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a0e794120a443c49045076849f5fea, type: 3}
   m_Name: Config
   m_EditorClassIdentifier: 
-  _spawnRange: {x: 2, y: 3}
+  _spawnRange: {x: 1, y: 2}
   _jumpMovement:
-    _speed: 2
+    _speed: 5
     _movementCurve:
       serializedVersion: 2
       m_Curve:
@@ -28,7 +28,7 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.25
+        time: 0.3
         value: 1
         inSlope: 0
         outSlope: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.5
+        time: 0.6
         value: 0
         inSlope: 0
         outSlope: 0
@@ -57,3 +57,5 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+  _crowMovementConfig:
+    _speed: 8

@@ -1,9 +1,10 @@
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 using ZooWorld.Core;
+using ZooWorld.Game.Units.Scope;
+using ZooWorld.Game.Units.Types;
 
 namespace ZooWorld.Game.Units
 {
@@ -15,30 +16,19 @@ namespace ZooWorld.Game.Units
         [Inject] private IObjectResolver _container;
         [Inject] private LifetimeScope _currentScope;
 
-        private readonly Dictionary<UnitType, IInstaller> _installersByUnitTypeMap = 
-            new Dictionary<UnitType, IInstaller>
-        {
-            { UnitType.Frog, new FrogInstaller() },
-            { UnitType.Snake, new SnakeInstaller() },
-        };
+        private readonly UnitTypeForIInstaller _unitTypeForIInstaller =
+            new UnitTypeForIInstaller(frog: new FrogInstaller(), snake: new SnakeInstaller());
         
         public async UniTask<GameObject> Create(UnitType type)
         {
             var assetReference = _assets.UnitModels.Get(type);
             var asset = await _assetProvider.LoadAssetAsync<GameObject>(assetReference);
-
-            var instance = _container.Instantiate(asset, Vector3.zero, Quaternion.Euler(0, _rnd.RandomRange(0, 360), 0));
+            var scopePrefab = asset.GetComponent<UnitScope>();
             
-            _currentScope.CreateChild(builder =>
-            {
-                builder.RegisterInstance(new UnitView(instance));
-                builder.RegisterEntryPoint<UnitInit>(Lifetime.Scoped);
-                
-                var installer = _installersByUnitTypeMap[type];
-                installer.Install(builder);
-            });
+            var installer = _unitTypeForIInstaller.Get(type);
+            var instance = _currentScope.CreateChildFromPrefab(scopePrefab, installer);
             
-            return instance;
+            return instance.gameObject;
         }
     }
 }

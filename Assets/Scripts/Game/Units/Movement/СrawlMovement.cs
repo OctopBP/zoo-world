@@ -1,17 +1,17 @@
 using VContainer;
-using ZooWorld.Core;
+using ZooWorld.Game.Units.Views;
 
 namespace ZooWorld.Game.Units.Movement
 {
     public class СrawlMovement : IMovable
     {
         [Inject] private UnitView _unitView;
-        [Inject] private IRnd _rnd;
+        [Inject] private Data.Config _config;
         
         public void Move(float deltaTime)
         {
-            var transform = _unitView.GameObject.transform;
-            transform.position += (transform.forward + transform.right * _rnd.RandomRange(-1f, 1f)) * deltaTime;
+            var transform = _unitView.transform;
+            transform.position += _config.CrowMovementConfig.Speed * deltaTime * transform.forward;
         }
     }
 }

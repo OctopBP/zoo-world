@@ -9,12 +9,19 @@ namespace ZooWorld.Game.Data
     {
         [SerializeField, PublicAccessor] private Vector2 _spawnRange;
         [SerializeField, PublicAccessor] private JumpMovementConfig _jumpMovement;
+        [SerializeField, PublicAccessor] private CrowMovementConfig _crowMovementConfig;
     }
     
     [Serializable]
     public partial class JumpMovementConfig
     {
-        [SerializeField, PublicAccessor] private float _speed;
+        [SerializeField, PublicAccessor] private float _speed = 1;
         [SerializeField, PublicAccessor] private AnimationCurve _movementCurve;
+    }
+    
+    [Serializable]
+    public partial class CrowMovementConfig
+    {
+        [SerializeField, PublicAccessor] private float _speed = 1;
     }
 }

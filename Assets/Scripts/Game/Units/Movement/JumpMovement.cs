@@ -1,4 +1,5 @@
 using VContainer;
+using ZooWorld.Game.Units.Views;
 
 namespace ZooWorld.Game.Units.Movement
 {
@@ -13,8 +14,12 @@ namespace ZooWorld.Game.Units.Movement
         {
             _time += deltaTime;
             var value = _config.JumpMovement.MovementCurve.Evaluate(_time % 1);
-            var transform = _unitView.GameObject.transform;
-            transform.position += transform.forward * value * deltaTime * _config.JumpMovement.Speed;
+            
+            var transform = _unitView.transform;
+            var position = transform.position;
+            position += value * deltaTime * _config.JumpMovement.Speed * transform.forward;
+            position.y = value;
+            transform.position = position;
         }
     }
 }
