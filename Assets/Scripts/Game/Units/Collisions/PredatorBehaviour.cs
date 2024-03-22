@@ -29,7 +29,7 @@ namespace ZooWorld.Game.Units.Collisions
                     break;
                 
                 case FoodChainResolver.CollisionResult.Ate:
-                    _predatorViewController.ShowText().Forget();
+                    _predatorViewController.ShowText();
                     break;
                 
                 case FoodChainResolver.CollisionResult.Nothing: break;
