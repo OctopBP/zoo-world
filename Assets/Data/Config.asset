@@ -57,5 +57,5 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  _crowMovementConfig:
+  _crawlMovementConfig:
     _speed: 8

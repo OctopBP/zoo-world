@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -8,18 +7,21 @@ using ZooWorld.Game.Units.Types;
 
 namespace ZooWorld.Game.Gameplay
 {
-    public class UnitsSpawner : ITickable
+    public class UnitsSpawner : IStartable, ITickable
     {
         [Inject] private ILog _log;
         [Inject] private IRnd _rnd;
         [Inject] private Data.Config _config;
-        [Inject] private Data.Assets _assets;
-        [Inject] private IAssetProvider _assetProvider;
-        [Inject] private IUnitFactory _unitFactory;
+        [Inject] private UnitFactory _unitFactory;
         [Inject] private UnitsSpawnerView _unitsSpawnerView;
-        
-        private float _delay = 0;
 
+        private float _delay = float.PositiveInfinity;
+        
+        public void Start()
+        {
+            _delay = 0;
+        }
+        
         public void Tick()
         {
             _delay -= Time.deltaTime;
@@ -28,9 +30,9 @@ namespace ZooWorld.Game.Gameplay
             {
                 return;
             }
-
+            
+            SpawnUnit();
             SetRandomDelay();
-            SpawnUnit().Forget();
         }
 
         private Vector3 RandomSpawnPosition()
@@ -44,11 +46,14 @@ namespace ZooWorld.Game.Gameplay
             _delay = _rnd.RandomRange(_config.SpawnRange.x, _config.SpawnRange.y);
         }
 
-        private async UniTask SpawnUnit()
+        private void SpawnUnit()
         {
-            var newUnit = await _unitFactory.Create(_rnd.RandomBool() ? UnitType.Frog : UnitType.Snake);
+            var randomType = _rnd.RandomBool() ? UnitType.Frog : UnitType.Snake;
+            var newUnit = _unitFactory.Get(randomType);
             newUnit.transform.position = RandomSpawnPosition();
             newUnit.transform.rotation = Quaternion.Euler(0, _rnd.RandomRange(0, 360), 0);
+            
+            _log.Log($"Spawn {randomType}");
         }
     }
 }

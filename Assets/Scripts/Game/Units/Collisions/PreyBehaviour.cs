@@ -9,6 +9,7 @@ namespace ZooWorld.Game.Units.Collisions
     {
         [Inject] private DeadUnitsUI _deadUnitsUI;
         [Inject] private UnitView _unitView;
+        [Inject] private PoolContainer _poolContainer;
         
         public override bool CanEatOther => false;
         
@@ -20,7 +21,7 @@ namespace ZooWorld.Game.Units.Collisions
             switch (result)
             {
                 case FoodChainResolver.CollisionResult.Eaten:
-                    _unitView.Destroy();
+                    _poolContainer.Release();
                     _deadUnitsUI.IncreaseDeadPreys();
                     break;
 

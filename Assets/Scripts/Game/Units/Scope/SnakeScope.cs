@@ -1,9 +1,11 @@
 using UnityEngine;
 using VContainer;
-using ZooWorld.Game.Units.Scope;
+using ZooWorld.Game.Units.Collisions;
+using ZooWorld.Game.Units.Movement;
+using ZooWorld.Game.Units.Types;
 using ZooWorld.Game.Units.Views;
 
-namespace ZooWorld.Game.Units
+namespace ZooWorld.Game.Units.Scope
 {
     public class SnakeScope : UnitScope
     {
@@ -12,8 +14,12 @@ namespace ZooWorld.Game.Units
         protected override void Configure(IContainerBuilder builder)
         {
             base.Configure(builder);
-            builder.Register<PredatorViewController>(Lifetime.Scoped);
+            
             builder.RegisterInstance(_predatorView);
+            builder.RegisterInstance(UnitType.Snake);
+            builder.Register<PredatorViewController>(Lifetime.Scoped);
+            
+            Install<CrawlMovement, PredatorBehaviour>(builder);
         }
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using Cysharp.Threading.Tasks;
 using VContainer;
 using ZooWorld.Game.Gameplay;
 using ZooWorld.Game.Units.Views;
@@ -12,6 +11,7 @@ namespace ZooWorld.Game.Units.Collisions
         [Inject] private UnitView _unitView;
         [Inject] private PredatorView _predatorView;
         [Inject] private PredatorViewController _predatorViewController;
+        [Inject] private PoolContainer _poolContainer;
         
         public override bool CanEatOther => true;
 
@@ -24,7 +24,7 @@ namespace ZooWorld.Game.Units.Collisions
             switch (result)
             {
                 case FoodChainResolver.CollisionResult.Eaten:
-                    _unitView.Destroy();
+                    _poolContainer.Release();
                     _deadUnitsUI.IncreaseDeadPredators();
                     break;
                 

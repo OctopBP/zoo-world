@@ -4,12 +4,11 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 using ZooWorld.Game.Gameplay;
-using ZooWorld.Game.Units.Collisions;
 using ZooWorld.Game.Units.Scope;
 using ZooWorld.Game.Units.Views;
 using ZooWorld.Game.Utils;
 
-namespace ZooWorld.Game.Units
+namespace ZooWorld.Game.Units.Collisions
 {
     public class UnitCollisionResolver : IStartable, ILateTickable, IDisposable
     {

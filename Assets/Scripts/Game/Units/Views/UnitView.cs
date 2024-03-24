@@ -11,10 +11,5 @@ namespace ZooWorld.Game.Units.Views
         {
             OnCollisionEnterSubj.OnNext(other);
         }
-
-        public void Destroy()
-        {
-            Destroy(gameObject);
-        }
     }
 }

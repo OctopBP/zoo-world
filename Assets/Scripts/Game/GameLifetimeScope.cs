@@ -28,7 +28,7 @@ namespace ZooWorld.Game
             builder.Register<UnitsSpawner>(Lifetime.Singleton);
             builder.Register<DeadUnitsUI>(Lifetime.Singleton);
             builder.Register<FoodChainResolver>(Lifetime.Singleton);
-            builder.Register<IUnitFactory, UnitFactory>(Lifetime.Singleton);
+            builder.Register<UnitFactory>(Lifetime.Singleton);
             
             builder.RegisterEntryPoint<GameEntryPoint>();
         }

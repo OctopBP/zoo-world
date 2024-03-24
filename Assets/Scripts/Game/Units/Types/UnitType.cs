@@ -1,10 +1,12 @@
+using UnityEngine;
 using UnityEngine.AddressableAssets;
-using VContainer.Unity;
+using UnityEngine.Pool;
 
 namespace ZooWorld.Game.Units.Types
 {
+    [EnumValuesList]
     [EnumTypeFor(typeof(AssetReference))]
-    [EnumTypeFor(typeof(IInstaller))]
+    [EnumTypeFor(typeof(IObjectPool<GameObject>), unitySerializable: false)]
     public enum UnitType
     {
         Frog,

@@ -1,8 +1,8 @@
-using System;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 using ZooWorld.Core;
+using ZooWorld.Game.Units.Collisions;
 using ZooWorld.Game.Units.Movement;
 
 namespace ZooWorld.Game.Units

@@ -258,7 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8483473358332802687}
-  - component: {fileID: -8808200133624899619}
+  - component: {fileID: -216392913616415776}
   - component: {fileID: 7493926097474702374}
   - component: {fileID: -1681915201259499905}
   - component: {fileID: 4806125657435872482}
@@ -285,7 +285,7 @@ Transform:
   - {fileID: 4523342305855369463}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8808200133624899619
+--- !u!114 &-216392913616415776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3679607195390855172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc954829d33c4655b07de9ce0e0d0f10, type: 3}
+  m_Script: {fileID: 11500000, guid: baa05297037e474281e4aeb058f5a32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentReference:
@@ -324,7 +324,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.2
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

@@ -20,7 +20,7 @@ namespace ZooWorld.Game.Units.Views
             
             _sequence
                 .Append(_predatorView.Text.transform.DOScale(Vector3.one, 0.3f))
-                .AppendInterval(1)
+                .AppendInterval(0.5f)
                 .Append(_predatorView.Text.transform.DOScale(Vector3.zero, 0.1f))
                 .OnComplete(() => _predatorView.Text.gameObject.SetActive(false));
         }

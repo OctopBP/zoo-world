@@ -3,7 +3,7 @@ using ZooWorld.Game.Units.Views;
 
 namespace ZooWorld.Game.Units.Movement
 {
-    public class СrawlMovement : IMovable
+    public class CrawlMovement : IMovable
     {
         [Inject] private UnitView _unitView;
         [Inject] private Data.Config _config;
@@ -11,7 +11,7 @@ namespace ZooWorld.Game.Units.Movement
         public void Move(float deltaTime)
         {
             var transform = _unitView.transform;
-            transform.position += _config.CrowMovementConfig.Speed * deltaTime * transform.forward;
+            transform.position += _config.CrawlMovementConfig.Speed * deltaTime * transform.forward;
         }
     }
 }
